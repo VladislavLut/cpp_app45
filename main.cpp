@@ -1,25 +1,26 @@
 #include <iostream>
-
+#include <Windows.h>
 using namespace std;
 
+void swapValues(int* ptr1, int* ptr2) {
+    int temp = *ptr1; 
+    *ptr1 = *ptr2; 
+    *ptr2 = temp; 
+}
+
 int main() {
-	int number;
+    system("chcp 1251");
+    system("cls");
+    int a = 5;
+    int b = 10;
 
-	cout << "Enter number: ";
-	cin >> number;
+    cout << "Initial values:\n";
+    cout << "a = " << a << ", b = " << b << "\n\n";
 
-	int* ptr = &number;
+    swapValues(&a, &b); 
 
-	if (*ptr > 0) {
-		cout << "The entered number is positive: " << endl;
-	}
-	else if (*ptr < 0) {
-		cout << "The entered number is negative: " << endl;
-	}
-	else {
-		cout << "The entered number is zero: " << endl;
-	}
+    cout << "Value after exchange:\n";
+    cout << "a = " << a << ", b = " << b << "\n";
 
-	return 0;
-
+    return 0;
 }
