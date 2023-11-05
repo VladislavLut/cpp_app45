@@ -3,28 +3,23 @@ using namespace std;
 
 int main() {
     const int arraySize = 5; 
-    int numbers[arraySize] = { 10, 20, 30, 40, 50 }; 
+    int originalArray[arraySize] = { 10, 20, 30, 40, 50 }; 
 
-    int* ptrStart = numbers; 
-    int* ptrEnd = numbers + arraySize - 1; 
+    int copiedArray[arraySize]; 
 
-    
+    int* ptrOriginal = originalArray; 
+    int* ptrCopied = copiedArray + arraySize - 1; 
 
-    while (ptrStart < ptrEnd) {
-        
-        int temp = *ptrStart;
-        *ptrStart = *ptrEnd;
-        *ptrEnd = temp;
-
-        
-        ptrStart++;
-        ptrEnd--;
+    for (int i = 0; i < arraySize; i++) {
+        *ptrCopied = *ptrOriginal; 
+        ptrOriginal++; 
+        ptrCopied--;   
     }
 
     
     cout << "Array with reversed order: ";
     for (int i = 0; i < arraySize; i++) {
-        cout << numbers[i] << " ";
+        cout << copiedArray[i] << " ";
     }
     cout << endl;
 
