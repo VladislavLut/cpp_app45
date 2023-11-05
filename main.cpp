@@ -3,18 +3,23 @@
 using namespace std;
 
 int main() {
-	int a = 5;
-	int b = 10;
+	int number;
 
-	int *ptr_a = &a;
-	int* ptr_b = &b;
+	cout << "Enter number: ";
+	cin >> number;
 
-	if (*ptr_a > *ptr_b) {
-		cout << "The largest number: " << *ptr_a << endl;
+	int* ptr = &number;
+
+	if (*ptr > 0) {
+		cout << "The entered number is positive: " << endl;
+	}
+	else if (*ptr < 0) {
+		cout << "The entered number is negative: " << endl;
 	}
 	else {
-		cout << "The largest number: " << *ptr_b << endl;
+		cout << "The entered number is zero: " << endl;
 	}
 
 	return 0;
+
 }
