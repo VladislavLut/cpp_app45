@@ -3,18 +3,25 @@ using namespace std;
 
 int main() {
     const int arraySize = 5; 
-    int numbers[arraySize] = { 10, 20, 30, 40, 50 }; 
+    int originalArray[arraySize] = { 10, 20, 30, 40, 50 }; 
 
-    int sum = 0; 
+    int copiedArray[arraySize]; 
 
-    int* ptr = numbers; 
+    int* ptrOriginal = originalArray; 
+    int* ptrCopied = copiedArray;     
 
     for (int i = 0; i < arraySize; i++) {
-        sum += *ptr; 
-        ptr++; 
+        *ptrCopied = *ptrOriginal; 
+        ptrOriginal++; 
+        ptrCopied++;   
     }
 
-    cout << "The sum of array elements: " << sum << endl;
+    
+    cout << "Copied array: ";
+    for (int i = 0; i < arraySize; i++) {
+        cout << copiedArray[i] << " ";
+    }
+    cout << endl;
 
     return 0;
 }
