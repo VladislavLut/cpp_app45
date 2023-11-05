@@ -1,26 +1,63 @@
 #include <iostream>
-#include <Windows.h>
 using namespace std;
 
-void swapValues(int* ptr1, int* ptr2) {
-    int temp = *ptr1; 
-    *ptr1 = *ptr2; 
-    *ptr2 = temp; 
+void add(int* a, int* b, int* result) {
+    *result = *a + *b;
+}
+
+void subtract(int* a, int* b, int* result) {
+    *result = *a - *b;
+}
+
+void multiply(int* a, int* b, int* result) {
+    *result = *a * (*b);
+}
+
+void divide(int* a, int* b, float* result) {
+    if (*b != 0) {
+        *result = static_cast<float>(*a) / (*b);
+    }
+    else {
+        cout << "Error: Division by zero!" << endl;
+    }
 }
 
 int main() {
-    system("chcp 1251");
-    system("cls");
-    int a = 5;
-    int b = 10;
+    int num1, num2;
+    char op;
+    int resultInt;
+    float resultFloat;
 
-    cout << "Initial values:\n";
-    cout << "a = " << a << ", b = " << b << "\n\n";
+    cout << "Enter the first number: ";
+    cin >> num1;
+    cout << "Enter operation (+, -, *, /): ";
+    cin >> op;
+    cout << "Enter the second number: ";
+    cin >> num2;
 
-    swapValues(&a, &b); 
-
-    cout << "Value after exchange:\n";
-    cout << "a = " << a << ", b = " << b << "\n";
+    switch (op) {
+    case '+':
+        add(&num1, &num2, &resultInt);
+        cout << "Addition result: " << resultInt << endl;
+        break;
+    case '-':
+        subtract(&num1, &num2, &resultInt);
+        cout << "Subtraction result: " << resultInt << endl;
+        break;
+    case '*':
+        multiply(&num1, &num2, &resultInt);
+        cout << "Multiplication result: " << resultInt << endl;
+        break;
+    case '/':
+        divide(&num1, &num2, &resultFloat);
+        if (num2 != 0) {
+            cout << "Division result: " << resultFloat << endl;
+        }
+        break;
+    default:
+        cout << "Wrong operation!" << endl;
+        break;
+    }
 
     return 0;
 }
